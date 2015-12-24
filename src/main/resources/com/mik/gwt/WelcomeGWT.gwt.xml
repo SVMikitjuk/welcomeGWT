@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='WelcomeGWT'>
+
+    <inherits name='com.google.gwt.user.User'/>
+    <inherits name="com.google.gwt.uibinder.UiBinder"/>
+    <inherits name="com.google.gwt.i18n.I18N"/>
+
+    <set-configuration-property name="locale.useragent" value="Y"/>
+
+    <extend-property name="locale" values="en"/>
+    <extend-property name="locale" values="ru"/>
+    <set-property-fallback name="locale" value="en"/>
+
+    <inherits name='com.google.gwt.user.theme.standard.Standard'/>
+
+    <entry-point class='com.mik.gwt.client.WelcomeGWT'/>
+
+    <!-- Specify the paths for translatable code                    -->
+    <source path='client'/>
+    <source path='shared'/>
+
+</module>

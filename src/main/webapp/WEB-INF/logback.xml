@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="rollingAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${catalina.home}/logs/welcomegwt/welcomegwt.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+
+            <fileNamePattern>${catalina.home}/logs/welcomegwt/welcomegwt.log.%d{yyyy-MM-dd}</fileNamePattern>
+
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%date{dd-MM-yyyy HH:mm:ss}] %-5level - %logger{16} - %msg%n%rEx{8}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework.web.context.ContextLoader" level="INFO"/>
+
+    <root level="DEBUG">
+        <appender-ref ref="rollingAppender"/>
+    </root>
+
+</configuration>

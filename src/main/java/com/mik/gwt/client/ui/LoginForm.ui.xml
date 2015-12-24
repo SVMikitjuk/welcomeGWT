@@ -1,0 +1,52 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:style>
+        .myTable {
+            display: table;
+            width: 50%;
+            margin-top: 10%;
+            margin-left: 30%;
+            padding: 10px;
+        }
+        .myTableRow {
+            display: table-row;
+        }
+        .myTableLabel {
+            display: table-cell;
+            padding-right: 10px;
+        }
+        .myTableCell {
+            display: table-cell;
+            width: 100%;
+            padding-bottom: 10px;
+        }
+        .myTableInput {
+            width: 150px;
+        }
+        .myTableButton {
+            font-size: large;
+            display: table-cell;
+            width: 100px;
+        }
+    </ui:style>
+
+    <g:FlowPanel addStyleNames="{style.myTable}">
+        <g:FlowPanel addStyleNames="{style.myTableRow}">
+            <g:Label addStyleNames="{style.myTableLabel}">Пользователь:</g:Label>
+            <g:FlowPanel width="100%" addStyleNames="{style.myTableCell}">
+                <g:TextBox ui:field="user" addStyleNames="{style.myTableInput}"/>
+            </g:FlowPanel>
+        </g:FlowPanel>
+        <g:FlowPanel addStyleNames="{style.myTableRow}">
+            <g:Label addStyleNames="{style.myTableLabel}">Пароль:</g:Label>
+            <g:FlowPanel width="100%" addStyleNames="{style.myTableCell}">
+                <g:TextBox ui:field="password" addStyleNames="{style.myTableInput}"/>
+            </g:FlowPanel>
+        </g:FlowPanel>
+        <g:FlowPanel addStyleNames="{style.myTableRow}">
+            <g:Label addStyleNames="{style.myTableLabel}"/>
+            <g:Button ui:field="login" text="Войти" addStyleNames="{style.myTableButton}"/>
+        </g:FlowPanel>
+    </g:FlowPanel>
+
+</ui:UiBinder>

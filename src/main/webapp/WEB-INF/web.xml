@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+
+  <!--&lt;!&ndash; Servlets &ndash;&gt;-->
+  <!--<servlet>-->
+    <!--<servlet-name>greetServlet</servlet-name>-->
+    <!--<servlet-class>com.mik.gwt.server.GreetingServiceImpl</servlet-class>-->
+  <!--</servlet>-->
+
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>greetServlet</servlet-name>-->
+    <!--<url-pattern>/WelcomeGWT/greet</url-pattern>-->
+  <!--</servlet-mapping>-->
+
+  <!--&lt;!&ndash; Default page to serve &ndash;&gt;-->
+  <!--<welcome-file-list>-->
+    <!--<welcome-file>WelcomeGWT.html</welcome-file>-->
+  <!--</welcome-file-list>-->
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/spring/app-context.xml
+        </param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>logbackConfigLocation</param-name>
+        <param-value>/WEB-INF/logback.xml</param-value>
+    </context-param>
+
+    <!-- SpringGwt remote service servlet -->
+    <servlet>
+        <servlet-name>springGwtRemoteServiceServlet</servlet-name>
+        <servlet-class>org.spring4gwt.server.SpringGwtRemoteServiceServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>springGwtRemoteServiceServlet</servlet-name>
+        <url-pattern>/WelcomeGWT/greet/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- Default page to serve -->
+    <welcome-file-list>
+        <welcome-file>WelcomeGWT.html</welcome-file>
+    </welcome-file-list>
+
+</web-app>

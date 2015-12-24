@@ -1,0 +1,31 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <ui:style>
+        .myTable {
+            display: table;
+            width: 50%;
+            margin-top: 5%;
+            margin-left: 10%;
+        }
+        .myTableRow {
+            display: table-row;
+        }
+        .logoutLink{
+            text-decoration: underline;
+            cursor: pointer;
+            padding-top: 30px
+        }
+
+    </ui:style>
+
+    <g:FlowPanel addStyleNames="{style.myTable}">
+        <g:FlowPanel addStyleNames="{style.myTableRow}">
+            <g:Label ui:field="welcomeLabel"/>
+        </g:FlowPanel>
+        <g:FlowPanel addStyleNames="{style.myTableRow}">
+            <g:Hyperlink styleName="{style.logoutLink}" ui:field="logoutLink">Выйти из системы</g:Hyperlink>
+        </g:FlowPanel>
+    </g:FlowPanel>
+
+</ui:UiBinder>

@@ -1,0 +1,13 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:style>
+        .logoPicture {
+            margin-left: 50px;
+        }
+    </ui:style>
+    <g:HTMLPanel>
+        <g:Image ui:field="logo" altText="logo" styleName="{style.logoPicture}"/>
+    </g:HTMLPanel>
+
+
+</ui:UiBinder>
