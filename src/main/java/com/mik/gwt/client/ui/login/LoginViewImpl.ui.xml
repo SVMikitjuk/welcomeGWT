@@ -40,7 +40,7 @@
         <g:FlowPanel addStyleNames="{style.myTableRow}">
             <g:Label addStyleNames="{style.myTableLabel}">Пароль:</g:Label>
             <g:FlowPanel width="100%" addStyleNames="{style.myTableCell}">
-                <g:TextBox ui:field="password" addStyleNames="{style.myTableInput}"/>
+                <g:PasswordTextBox ui:field="password" addStyleNames="{style.myTableInput}"/>
             </g:FlowPanel>
         </g:FlowPanel>
         <g:FlowPanel addStyleNames="{style.myTableRow}">

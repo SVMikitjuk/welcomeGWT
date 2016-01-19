@@ -12,14 +12,49 @@ import java.util.List;
  * Created by mikitjuk on 16.12.15.
  */
 @Repository("userDAO")
-public class UserDAO extends GenericAbstractDAO<Users, Integer> {
+public class UserDAO{
 
     @PersistenceContext(unitName = "logoPersistenceUnit")
     EntityManager entityManager;
 
-    @Override
     public EntityManager getEntityManager() {
         return entityManager;
+    }
+
+    public Users create(Users entity) {
+        getEntityManager().persist(entity);
+        return entity;
+    }
+
+    public Users read(Integer id) {
+        return getEntityManager().find(Users.class, id);
+    }
+
+    public Users update(Users entity) {
+        getEntityManager().refresh(entity);
+        return entity;
+    }
+
+    public void delete(Users entity) {
+        getEntityManager().remove(entity);
+    }
+
+    public Users flush(Users entity) {
+        getEntityManager().flush();
+        return entity;
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Users> findAll() {
+        return getEntityManager()
+                .createQuery("select x from Users x")
+                .getResultList();
+    }
+
+    public Integer removeAll() {
+        return getEntityManager()
+                .createQuery("delete from Users h")
+                .executeUpdate();
     }
 
     public Users getUsersByLogin(String login) {

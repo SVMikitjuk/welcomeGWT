@@ -1,4 +1,4 @@
-package com.mik.gwt.client.ui;
+package com.mik.gwt.client.ui.footer;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.DateTimeFormat;
@@ -13,18 +13,16 @@ import java.util.Date;
 /**
  * Created by mikitjuk on 22.12.15.
  */
-public class FooterForm extends Composite {
-    interface FooterFormUiBinder extends UiBinder<Widget, FooterForm> {
-    }
+public class FooterView extends Composite {
 
+    interface FooterFormUiBinder extends UiBinder<Widget, FooterView> {}
     private static FooterFormUiBinder ourUiBinder = GWT.create(FooterFormUiBinder.class);
 
     @UiField
     Label footer;
 
-    public FooterForm() {
+    public FooterView() {
         initWidget(ourUiBinder.createAndBindUi(this));
         footer.setText("@ " + DateTimeFormat.getFormat("yyyy").format(new Date()) + " Ardas Group");
-
     }
 }

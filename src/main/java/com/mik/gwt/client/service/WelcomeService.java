@@ -1,7 +1,8 @@
-package com.mik.gwt.client;
+package com.mik.gwt.client.service;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+import com.mik.gwt.shared.Response;
 
 import java.util.Date;
 
@@ -10,5 +11,5 @@ import java.util.Date;
  */
 @RemoteServiceRelativePath("greet")
 public interface WelcomeService extends RemoteService {
-  String loginServer(String name, String password, String locale, Date date) throws IllegalArgumentException;
+  Response loginServer(String name, String password, String locale, Date date);
 }
