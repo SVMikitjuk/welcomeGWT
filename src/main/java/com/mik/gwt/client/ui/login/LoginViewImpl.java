@@ -8,7 +8,6 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
-import com.mik.gwt.client.presenter.LoginPresenter;
 
 
 /**
@@ -20,7 +19,7 @@ public class LoginViewImpl extends Composite implements LoginView {
     interface LoginFormUiBinder extends UiBinder<Widget, LoginViewImpl> { }
 
     private static LoginFormUiBinder ourUiBinder = GWT.create(LoginFormUiBinder.class);
-    private LoginPresenter loginPresenter;
+    private Presenter presenter;
 
     @UiField
     TextBox user;
@@ -31,13 +30,12 @@ public class LoginViewImpl extends Composite implements LoginView {
         initWidget(ourUiBinder.createAndBindUi(this));
     }
 
-    @Override
-    public void setPresenter(LoginPresenter loginPresenter) {
-        this.loginPresenter = loginPresenter;
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
     }
 
     @UiHandler("login")
     void login(ClickEvent e) {
-        loginPresenter.loginButtonClicked(user.getValue(), password.getValue());
+        presenter.login(user.getValue(), password.getValue());
     }
 }

@@ -20,24 +20,27 @@ public class WelcomeViewImpl extends Composite implements WelcomeView{
     interface WelcomeFormUiBinder extends UiBinder<Widget, WelcomeViewImpl> { }
 
     private static WelcomeFormUiBinder ourUiBinder = GWT.create(WelcomeFormUiBinder.class);
-    private WelcomePresenter presenter;
+    private Presenter presenter;
 
     @UiField
     Label welcomeLabel;
 
-    public WelcomeViewImpl(String result) {
+    public WelcomeViewImpl() {
         initWidget(ourUiBinder.createAndBindUi(this));
-        welcomeLabel.setText(result);
+      //  welcomeLabel.setText(result);
     }
 
-    @Override
-    public void setPresenter(WelcomePresenter presenter) {
+    public void setPresenter(Presenter presenter) {
         this.presenter = presenter;
     }
 
     @UiHandler("logoutLink")
     void logout(ClickEvent e) {
         presenter.logout();
+    }
+
+    public void setWelcomeUser(String welcomeUser){
+        welcomeLabel.setText(welcomeUser);
     }
 
 }

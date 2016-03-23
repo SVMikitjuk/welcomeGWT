@@ -15,7 +15,7 @@ public class WelcomePresenter implements Presenter {
     public WelcomePresenter(HandlerManager eventBus, WelcomeViewImpl view) {
         this.eventBus = eventBus;
         this.view = view;
-        this.view.setPresenter(this);
+       // this.view.setPresenter(this);
     }
 
     public void go(final HasWidgets container) {

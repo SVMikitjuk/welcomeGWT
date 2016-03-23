@@ -12,6 +12,8 @@
     <set-property-fallback name="locale" value="en"/>
 
     <inherits name='com.google.gwt.user.theme.standard.Standard'/>
+    <inherits name="com.google.gwt.place.Place"/>
+    <inherits name="com.google.gwt.activity.Activity"/>
 
     <entry-point class='com.mik.gwt.client.WelcomeGWT'/>
 

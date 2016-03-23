@@ -26,7 +26,7 @@ public class LoginPresenter implements Presenter{
         this.rpcService = rpcService;
         this.eventBus = eventBus;
         this.view = view;
-        this.view.setPresenter(this);
+      //  this.view.setPresenter(this);
     }
 
     public void go(final HasWidgets container) {

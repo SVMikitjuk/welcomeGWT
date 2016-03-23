@@ -3,6 +3,7 @@ package com.mik.gwt.client;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.web.bindery.event.shared.EventBus;
 import com.mik.gwt.client.event.LoginEvent;
 import com.mik.gwt.client.event.LoginEventHandler;
 import com.mik.gwt.client.event.WelcomeEvent;
@@ -20,11 +21,11 @@ import com.mik.gwt.client.ui.welcome.WelcomeViewImpl;
  * Created by mikitjuk on 18.01.16.
  */
 public class AppController {
-    private final HandlerManager eventBus;
+    private final EventBus eventBus;
     private final WelcomeServiceAsync rpcService;
     private HasWidgets main;
 
-    public AppController(WelcomeServiceAsync rpcService, HandlerManager eventBus) {
+    public AppController(WelcomeServiceAsync rpcService, EventBus eventBus) {
         this.eventBus = eventBus;
         this.rpcService = rpcService;
         bind();
@@ -48,8 +49,8 @@ public class AppController {
     }
 
     private void doLogin(String result) {
-        Presenter presenter = new WelcomePresenter(eventBus, new WelcomeViewImpl(result));
-        presenter.go(main);
+//        Presenter presenter = new WelcomePresenter(eventBus, new WelcomeViewImpl(result));
+//        presenter.go(main);
     }
 
     private void doLogout() {
@@ -69,7 +70,7 @@ public class AppController {
     }
 
     private void setStartPage() {
-        Presenter presenter = new LoginPresenter(rpcService, eventBus, new LoginViewImpl());
-        presenter.go(main);
+//        Presenter presenter = new LoginPresenter(rpcService, eventBus, new LoginViewImpl());
+//        presenter.go(main);
     }
 }
