@@ -17,6 +17,10 @@
 
     <entry-point class='com.mik.gwt.client.WelcomeGWT'/>
 
+    <replace-with class="com.mik.gwt.client.ClientFactoryImpl">
+        <when-type-is class="com.mik.gwt.client.ClientFactory" />
+    </replace-with>
+
     <!-- Specify the paths for translatable code                    -->
     <source path='client'/>
     <source path='shared'/>

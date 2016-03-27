@@ -2,9 +2,6 @@ package com.mik.gwt.client.place;
 
 import com.google.gwt.place.shared.PlaceTokenizer;
 
-/**
- * Created by Сокол on 13.03.2016.
- */
 public class WelcomePlace extends AppPlace {
 
     private String token;

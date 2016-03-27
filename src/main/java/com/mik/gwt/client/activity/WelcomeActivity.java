@@ -14,6 +14,7 @@ public class WelcomeActivity extends AbstractActivity implements WelcomeView.Pre
 
 	private ClientFactory clientFactory;
 	private String name;
+	private WelcomeView welcomeView;
 
 	public WelcomeActivity(WelcomePlace place, ClientFactory clientFactory) {
 		this.name = place.getToken();
@@ -21,7 +22,7 @@ public class WelcomeActivity extends AbstractActivity implements WelcomeView.Pre
 	}
 
 	public void start(AcceptsOneWidget containerWidget, EventBus eventBus) {
-		WelcomeView welcomeView = clientFactory.getWelcomeView();
+		welcomeView = clientFactory.getWelcomeView();
 		//welcomeView.setName(name);
 		welcomeView.setPresenter(this);
 		containerWidget.setWidget(welcomeView.asWidget());

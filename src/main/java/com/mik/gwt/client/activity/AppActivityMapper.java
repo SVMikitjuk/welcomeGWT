@@ -8,7 +8,6 @@ import com.mik.gwt.client.place.LoginPlace;
 import com.mik.gwt.client.place.WelcomePlace;
 
 public class AppActivityMapper implements ActivityMapper {
-
 	private ClientFactory clientFactory;
 
 	public AppActivityMapper(ClientFactory clientFactory) {
@@ -17,7 +16,6 @@ public class AppActivityMapper implements ActivityMapper {
 	}
 
 	public Activity getActivity(Place place) {
-
 		if (place instanceof LoginPlace)
 			return new LoginActivity((LoginPlace) place, clientFactory);
 		else if (place instanceof WelcomePlace)
