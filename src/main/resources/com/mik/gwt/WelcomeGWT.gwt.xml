@@ -14,6 +14,7 @@
     <inherits name='com.google.gwt.user.theme.standard.Standard'/>
     <inherits name="com.google.gwt.place.Place"/>
     <inherits name="com.google.gwt.activity.Activity"/>
+    <inherits name="com.google.gwt.inject.Inject"/>
 
     <entry-point class='com.mik.gwt.client.WelcomeGWT'/>
 

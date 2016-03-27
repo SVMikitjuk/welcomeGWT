@@ -12,6 +12,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.web.bindery.event.shared.EventBus;
 import com.mik.gwt.client.activity.AppActivityMapper;
+import com.mik.gwt.client.ioc.AppGinjector;
 import com.mik.gwt.client.place.AppPlaceHistoryMapper;
 import com.mik.gwt.client.place.LoginPlace;
 import com.mik.gwt.client.service.WelcomeService;
@@ -24,9 +25,10 @@ public class WelcomeGWT implements EntryPoint {
 
     private Place defaultPlace = new LoginPlace("login");
     private SimplePanel appWidget = new SimplePanel();
+    private final AppGinjector injector = GWT.create(AppGinjector.class);
 
     public void onModuleLoad() {
-        ClientFactory clientFactory = GWT.create(ClientFactory.class);
+        ClientFactory clientFactory = injector.getClientFactory();
         EventBus eventBus = clientFactory.getEventBus();
         PlaceController placeController = clientFactory.getPlaceController();
 
