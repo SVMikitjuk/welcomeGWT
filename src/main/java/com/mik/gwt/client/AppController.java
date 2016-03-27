@@ -41,7 +41,7 @@ public class AppController {
         });
 
         eventBus.addHandler(WelcomeEvent.TYPE, new WelcomeEventHandler() {
-            @Override
+
             public void onLogout(WelcomeEvent event) {
                 doLogout();
             }
