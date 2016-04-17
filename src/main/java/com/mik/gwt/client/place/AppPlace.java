@@ -4,6 +4,13 @@ import com.google.gwt.place.shared.Place;
 
 public abstract class AppPlace extends Place {
 
-  public abstract String getToken();
+    private String placeName;
 
+    public void setPlaceName(String token) {
+        this.placeName = token;
+    }
+
+    public String getPlaceName() {
+        return placeName;
+    }
 }

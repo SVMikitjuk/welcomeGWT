@@ -9,6 +9,7 @@ import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.web.bindery.event.shared.EventBus;
@@ -17,6 +18,10 @@ import com.mik.gwt.client.activity.AppActivityMapper;
 import com.mik.gwt.client.activity.LoginActivity;
 import com.mik.gwt.client.activity.WelcomeActivity;
 import com.mik.gwt.client.place.AppPlaceHistoryMapper;
+import com.mik.gwt.client.place.DefaultPlace;
+import com.mik.gwt.client.place.LoginPlace;
+import com.mik.gwt.client.service.WelcomeService;
+import com.mik.gwt.client.service.WelcomeServiceAsync;
 import com.mik.gwt.client.ui.login.LoginView;
 import com.mik.gwt.client.ui.login.LoginViewImpl;
 import com.mik.gwt.client.ui.welcome.WelcomeView;
@@ -31,13 +36,11 @@ public class AppInjectorModule extends AbstractGinModule {
         bind(LoginView.class).to(LoginViewImpl.class).in(Singleton.class);
         bind(WelcomeView.class).to(WelcomeViewImpl.class).in(Singleton.class);
 
-        bind(AppActivityMapper.class).in(Singleton.class);
         bind(AppPlaceHistoryMapper.class).in(Singleton.class);
+        bind(ActivityMapper.class).to(AppActivityMapper.class).in(Singleton.class);
 
-        install(new GinFactoryModuleBuilder()
-                .implement(LoginActivity.class, LoginActivity.class)
-      .implement(WelcomeActivity.class, WelcomeActivity.class)
-                .build(ActivityFactory.class));
+        bind(Place.class).annotatedWith(DefaultPlace.class).to(LoginPlace.class);
+        install(new GinFactoryModuleBuilder().build(AppActivityMapper.ActivityFactory.class));
     }
 
     @Singleton
@@ -48,18 +51,22 @@ public class AppInjectorModule extends AbstractGinModule {
 
     @Singleton
     @Provides
-    ActivityManager provideActivityManager(ActivityMapper mapper, EventBus eventBus) {
-        return new ActivityManager(mapper, eventBus);
+    ActivityManager provideActivityManager(ActivityMapper activityMapper, EventBus eventBus) {
+        return new ActivityManager(activityMapper, eventBus);
     }
 
     @Singleton
     @Provides
-    PlaceHistoryHandler providePlaceHistoryHandler(PlaceHistoryMapper mapper,
-                                                   PlaceController placeController, EventBus eventBus, @DefaultPlace
-                                                           Place defaultPlace) {
-        PlaceHistoryHandler phh = new PlaceHistoryHandler(mapper);
-        phh.register(placeController, eventBus, defaultPlace);
-        return phh;
+    PlaceHistoryHandler providePlaceHistoryHandler(PlaceHistoryMapper mapper, PlaceController placeController,
+                                                   EventBus eventBus, @DefaultPlace Place defaultPlace) {
+        PlaceHistoryHandler placeHistoryHandler = new PlaceHistoryHandler(mapper);
+        placeHistoryHandler.register(placeController, eventBus, defaultPlace);
+        return placeHistoryHandler;
     }
 
+    @Singleton
+    @Provides
+    WelcomeServiceAsync provideRequestFactory() {
+        return GWT.create(WelcomeService.class);
+    }
 }

@@ -10,6 +10,7 @@ import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.mik.gwt.client.activity.AppActivityMapper;
 import com.mik.gwt.client.ioc.AppGinjector;
@@ -23,29 +24,41 @@ import com.mik.gwt.client.ui.login.LoginViewImpl;
 
 public class WelcomeGWT implements EntryPoint {
 
-    private Place defaultPlace = new LoginPlace("login");
-    private SimplePanel appWidget = new SimplePanel();
-    private final AppGinjector injector = GWT.create(AppGinjector.class);
+//    private Place defaultPlace = new LoginPlace("login");
+    //private SimplePanel appWidget = new SimplePanel();
+   // private final AppGinjector injector = GWT.create(AppGinjector.class);
+
+//    @Inject
+//    PlaceHistoryHandler historyHandler;
+ //   @Inject
+//    ActivityMapper activityManager;
 
     public void onModuleLoad() {
-        ClientFactory clientFactory = injector.getClientFactory();
-        EventBus eventBus = clientFactory.getEventBus();
-        PlaceController placeController = clientFactory.getPlaceController();
+        AppGinjector injector = GWT.create(AppGinjector.class);
+      //  injector.inject(this);
+
+        final SimplePanel activityDisplay = injector.getWidget();
+        injector.getActivityManager().setDisplay(activityDisplay);
+
+
+        //ClientFactory clientFactory = injector.getClientFactory();
+//        EventBus eventBus = clientFactory.getEventBus();
+//        PlaceController placeController = clientFactory.getPlaceController();
 
         // Start ActivityManager for the main widget with our ActivityMapper
-        ActivityMapper activityMapper = new AppActivityMapper(clientFactory);
-        ActivityManager activityManager = new ActivityManager(activityMapper, eventBus);
-        activityManager.setDisplay(appWidget);
+       // ActivityMapper activityMapper = new AppActivityMapper(clientFactory);
+        //ActivityManager activityManager = new ActivityManager(activityMapper, eventBus);
+      //  activityManager.setDisplay(appWidget);
 
         // Start PlaceHistoryHandler with our PlaceHistoryMapper
-        AppPlaceHistoryMapper historyMapper= GWT.create(AppPlaceHistoryMapper.class);
-        PlaceHistoryHandler historyHandler = new PlaceHistoryHandler(historyMapper);
-        historyHandler.register(placeController, eventBus, defaultPlace);
+//        AppPlaceHistoryMapper historyMapper= GWT.create(AppPlaceHistoryMapper.class);
+//        PlaceHistoryHandler historyHandler = new PlaceHistoryHandler(historyMapper);
+//        historyHandler.register(placeController, eventBus, defaultPlace);
 
         RootPanel.get("header").add(new HeaderView());
-        RootPanel.get("main").add(appWidget);
+        RootPanel.get("main").add(activityDisplay);
         RootPanel.get("footer").add(new FooterView());
 
-        historyHandler.handleCurrentHistory();
+        injector.getPlaceHistoryHandler().handleCurrentHistory();
     }
 }

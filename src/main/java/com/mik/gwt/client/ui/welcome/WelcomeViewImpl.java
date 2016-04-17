@@ -8,8 +8,6 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
-import com.mik.gwt.client.presenter.WelcomePresenter;
-
 
 /**
  * Created by mikitjuk on 14.12.15.

@@ -3,24 +3,25 @@ package com.mik.gwt.client.activity;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
-import com.mik.gwt.client.ClientFactory;
+import com.google.inject.Inject;
 import com.mik.gwt.client.place.LoginPlace;
 import com.mik.gwt.client.place.WelcomePlace;
 
 public class AppActivityMapper implements ActivityMapper {
-	private ClientFactory clientFactory;
-
-	public AppActivityMapper(ClientFactory clientFactory) {
-		super();
-		this.clientFactory = clientFactory;
-	}
+	@Inject
+	ActivityFactory factory;
 
 	public Activity getActivity(Place place) {
 		if (place instanceof LoginPlace)
-			return new LoginActivity((LoginPlace) place, clientFactory);
+			return factory.createLoginActivity((LoginPlace) place);
 		else if (place instanceof WelcomePlace)
-			return new WelcomeActivity((WelcomePlace) place, clientFactory);
+			return factory.createWelcomeActivity((WelcomePlace) place);
 
 		return null;
+	}
+
+	public interface ActivityFactory {
+		WelcomeActivity createWelcomeActivity(WelcomePlace place);
+		LoginActivity createLoginActivity(LoginPlace place);
 	}
 }

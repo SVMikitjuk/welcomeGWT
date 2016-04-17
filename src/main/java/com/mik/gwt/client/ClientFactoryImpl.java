@@ -1,5 +1,6 @@
 package com.mik.gwt.client;
 
+import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.inject.Inject;
@@ -14,16 +15,23 @@ import com.mik.gwt.client.ui.welcome.WelcomeView;
 import com.mik.gwt.client.ui.welcome.WelcomeViewImpl;
 
 public class ClientFactoryImpl implements ClientFactory {
-	private EventBus eventBus = new SimpleEventBus();
-	private static final WelcomeServiceAsync rpcService = GWT.create(WelcomeService.class);
-	private PlaceController placeController = new PlaceController(eventBus);
-	private static final LoginView loginView = new LoginViewImpl();
-	private static final WelcomeView welcomeView = new WelcomeViewImpl();
 
 	@Inject
-	public  ClientFactoryImpl(final EventBus eventBus, final PlaceController placeController){//, final Provider<MainPanel> mainPanelProvider){
+	private EventBus eventBus;
+	private static final WelcomeServiceAsync rpcService = GWT.create(WelcomeService.class);
+	private PlaceController placeController;
+	@Inject
+	ActivityMapper activityManager;
+	@Inject
+	private LoginView loginView;
+	@Inject
+	private WelcomeView welcomeView;
+
+	@Inject
+	public  ClientFactoryImpl(EventBus eventBus, PlaceController placeController, ActivityMapper activityManager){//, final Provider<MainPanel> mainPanelProvider){
 		this.eventBus = eventBus;
 		this.placeController = placeController;
+		this.activityManager = activityManager;
 		//this.mainPanelProvider = mainPanelProvider;
 	}
 	public EventBus getEventBus()
