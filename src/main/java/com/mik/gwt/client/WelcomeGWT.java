@@ -35,7 +35,6 @@ public class WelcomeGWT implements EntryPoint {
 
     public void onModuleLoad() {
         AppGinjector injector = GWT.create(AppGinjector.class);
-      //  injector.inject(this);
 
         final SimplePanel activityDisplay = injector.getWidget();
         injector.getActivityManager().setDisplay(activityDisplay);
