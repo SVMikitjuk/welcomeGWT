@@ -26,6 +26,6 @@ public class WelcomeActivity extends AbstractActivity implements WelcomeView.Pre
 	}
 
 	public void logout() {
-		goTo(new LoginPlace());
+		placeController.goTo(new LoginPlace());
 	}
 }

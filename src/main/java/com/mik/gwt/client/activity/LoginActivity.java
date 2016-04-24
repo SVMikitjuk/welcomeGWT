@@ -49,7 +49,7 @@ public class LoginActivity extends AbstractActivity implements LoginView.Present
 			public void onSuccess(Response result) {
 				if (result.getStat() == ResponseStat.access) {
 					welcomeView.setWelcomeUser(result.getMessage());
-					goTo(new WelcomePlace());
+					placeController.goTo(new WelcomePlace());
 				}else if (result.getStat() == ResponseStat.denied)
 					Window.alert(result.getMessage());
 			}

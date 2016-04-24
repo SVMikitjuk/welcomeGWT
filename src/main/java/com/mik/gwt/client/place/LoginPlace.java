@@ -6,26 +6,28 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 
 public class LoginPlace extends AppPlace {
+    private static final String VIEW_HISTORY_TOKEN = "login";
 
-    @Prefix("login")
+    @Prefix(VIEW_HISTORY_TOKEN)
     public static class Tokenizer implements PlaceTokenizer<LoginPlace> {
 
-        private final Provider<LoginPlace> placeProvider;
-
-        @Inject
-        public Tokenizer(Provider<LoginPlace> placeProvider) {
-            this.placeProvider = placeProvider;
-        }
+//        private final Provider<LoginPlace> placeProvider;
+//
+//        @Inject
+//        public Tokenizer(Provider<LoginPlace> placeProvider) {
+//            this.placeProvider = placeProvider;
+//        }
 
         public String getToken(LoginPlace place) {
-            return place.getPlaceName();
+            return "";
         }
 
         public LoginPlace getPlace(String token) {
-            LoginPlace place = placeProvider.get();
-            place.setPlaceName(token);
-            return place;
-           // return new LoginPlace(token);
+//            LoginPlace place = placeProvider.get();
+//            place.setPlaceName(token);
+//            return place;
+            return new LoginPlace();
+           // return placeProvider.get();
         }
     }
 }

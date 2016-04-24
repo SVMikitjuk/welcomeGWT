@@ -60,5 +60,6 @@ public class WelcomeGWT implements EntryPoint {
         RootPanel.get("footer").add(new FooterView());
 
         injector.getPlaceHistoryHandler().handleCurrentHistory();
+        //historyHandler.handleCurrentHistory();
     }
 }
